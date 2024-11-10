@@ -37,16 +37,19 @@
 
   .bee-button--animation {
     position: absolute;
+
+    //<editor-fold desc="这部分代码可以不用设置">
     top: 0;
     left: 0;
-
     width: 100%;
     height: 100%;
+    //</editor-fold>
+
     > span {
       position: absolute;
-
       display: block;
 
+      // animate from where mouse clicks
       transform-origin: center;
       animation: btnClick .5s ease;
 
@@ -100,6 +103,7 @@
         background-color: @button-animation-background-color;
       }
 
+      // 这个决定了按住button时，是否应用样式变化。如果需要应用，则comment下面
       &:active {
         color: @button-color;
         border-color: @border-color;
@@ -129,6 +133,8 @@
       .bee-button--animation > span {
         background-color: @button-primary-animation-background-color;
       }
+
+      // hover & active 时固定 BG color，避免变化的元素太多，影响视觉
 
       &:hover {
         background-color: @button-primary-background-color;

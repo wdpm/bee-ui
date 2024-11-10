@@ -25,11 +25,13 @@
 <script>
 import Listener from '../../utils/listener'
 
+// 这个类实现了浏览器某个div的自定义滑动条
 export default {
   name: 'BeeScrollbar',
   props: {
     showType: {
       type: String,
+      // hover 表示悬浮时才显示
       validator: function (value) {
         return /^(always|hover)$/.test(value)
       },
@@ -95,9 +97,13 @@ export default {
       const horizontalBarWidth = _scrollElement.offsetWidth - _scrollElement.clientWidth
       const verticalBarHeight = _scrollElement.offsetHeight - _scrollElement.clientHeight
       let style = _scrollElement.getAttribute('style') || ''
+      // 原理参考目录下截图
       _scrollElement.setAttribute('style', this.updateStyle(style, {
+        // 把浏览器自带的垂直以及水平滑动条的区域也考虑进实际的width和height
         'width': `calc(100% + ${horizontalBarWidth}px)`,
         'height': `calc(100% + ${verticalBarHeight}px)`,
+        // 但是又不想显示浏览器自带的滑动条（可能是嫌丑？），于是使用负margin将其隐藏。
+        // 可以断定，这个div一定是overflow:hidden
         'margin-bottom': `-${verticalBarHeight}px`,
         'margin-right': `-${horizontalBarWidth}px`
       }))

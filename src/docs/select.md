@@ -67,7 +67,7 @@ export default {
 ``` html
 <template>
   <p class='inline'>
-    <bee-select  :options='options' placeholder='请选择' v-model='model.base[0]' @change='onChanged' :search-length="15"></bee-select>
+    <bee-select  :options='options' placeholder='请选择' v-model='model.base[0]' @change='onChanged' :search-length="5"></bee-select>
     <bee-select  :options='options' placeholder='请选择' v-model='model.base[1]' @change='onChanged'></bee-select>
   </p>
 </template>

@@ -3,24 +3,24 @@
     <div class="demo-block-source">
       <slot name="source"></slot>
       <span class="demo-block-code-icon"
-        v-if="!$slots.default"
-        @click="showCode=!showCode">
+            v-if="!$slots.default"
+            @click="showCode=!showCode">
           <span v-if='!showCode'>查看代码</span>
           <span v-else>收起代码</span>
         </span>
     </div>
     <div class="demo-block-meta"
-      v-if="$slots.default">
+         v-if="$slots.default">
       <slot></slot>
       <span v-if="$slots.default"
-        class="demo-block-code-icon"
-        @click="showCode=!showCode">
+            class="demo-block-code-icon"
+            @click="showCode=!showCode">
           <span v-if='!showCode'>查看代码</span>
           <span v-else>收起代码</span>
       </span>
     </div>
     <div class="demo-block-code"
-      v-show="showCode">
+         v-show="showCode">
       <slot name="highlight"></slot>
     </div>
   </div>
@@ -50,7 +50,6 @@ export default {
   transition: all 0.2s;
 
   border: 1px solid #ebedf0;
-  border-radius: 2px;
   border-radius: 2px;
 
   pre {
@@ -108,6 +107,7 @@ export default {
     color: #444;
     border-bottom: 1px solid #ebedf0;
   }
+
   .demo-block-meta {
     position: relative;
 
@@ -125,7 +125,6 @@ export default {
     border-radius: 0 0 2px 2px;
     border-radius: 0;
 
-    font-size: 14px;
     font-size: 14px;
     line-height: 2;
   }
@@ -261,6 +260,7 @@ export default {
     padding: 0;
   }
 }
+
 .sh-checkbox {
   position: relative;
 

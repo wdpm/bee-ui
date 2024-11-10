@@ -7,7 +7,6 @@
       <bee-scrollbar ref='scrollbar' :scroll-element.sync='scrollDom'>
         <div class="pageer" ref='PW'>
           <router-view class="contentper md"/>
-
           <iframe ref='reference' src="about:blank" frameborder="0" class='resize-reference'></iframe>
         </div>
       </bee-scrollbar>

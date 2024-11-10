@@ -49,7 +49,11 @@
     }
 
     .bee-search--input {
+
+      // 设置基本width
       width: 60px;
+
+      // 约束等于父容器 100% 宽度。如果父容器超过 base width，那么下面生效。
       min-width: 100%;
       max-width: 100%;
 
@@ -82,12 +86,15 @@
 
   .bee-select--icon {
     position: absolute;
-    top: 50%;
-    right: 0%;
+    top: 0;
+    right: 0;
 
     width: @select-icon-width;
 
-    transform: translate3d(0, -50%, 0);
+    // 按照自身高度的一半下移。
+    //top: 50%;
+    // 这个是为了抵消 top 50%的下移
+    //transform: translate3d(0, -50%, 0);
     text-align: center;
   }
 
@@ -126,7 +133,8 @@
   }
 
   &.bee-select__disabled {
-    cursor: no-drop;  opacity: .6;
+    cursor: no-drop;
+    opacity: .6;
     background-color: @select-background-color_disabled;
 
     .bee-search--input {

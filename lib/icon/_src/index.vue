@@ -20,6 +20,7 @@ export default {
     }
   },
   computed: {
+    // vue 2.x 中外部事件通过 $listeners 传递
     hasListeners () {
       return Object.keys(this.$listeners || {}).length !== 0
     }

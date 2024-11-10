@@ -12,7 +12,7 @@ export default {
       model: {
         base: [null, null, null, null],
         icon: [null, null],
-        autofoucs: null,
+        autofocus: null,
         reg: [null, null, null],
         event: [null, null, null]
       },
@@ -95,9 +95,9 @@ export default {
 <template>
   <div class='demo'>
     <p>
-      <bee-input v-model='model.autofoucs' placeholder='请输入' :autofocus='true'></bee-input>
+      <bee-input v-model='model.autofocus' placeholder='请输入' :autofocus='true'></bee-input>
     </p>
-    <p> 您输入的是：{{model.autofoucs}}</p>
+    <p> 您输入的是：{{model.autofocus}}</p>
   <div>
 </template>
 
@@ -106,7 +106,7 @@ export default {
   data() {
     return {
       model: {
-        autofoucs: null
+        autofocus: null
       }
     }
   }
@@ -291,13 +291,13 @@ export default {
   <div class='demo'>
     <p>
       <bee-input 
-        placeholder='打开console面板' 
+        placeholder='打开console面板: value change or mouse click' 
         @change='print' 
         @click='print'
         v-model='model.event[0]'
       ></bee-input>
       <bee-input 
-        placeholder='打开console面板' 
+        placeholder='打开console面板: mouseenter or mouseleave' 
         @mouseenter='print' 
         @mouseleave='print' 
         v-model='model.event[1]'

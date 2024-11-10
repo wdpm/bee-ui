@@ -17,7 +17,7 @@
     width: 100%;
     height: 100%;
 
-    padding: 0 @padding-vertial;
+    padding: 0 @padding-vertical;
     border: none;
     outline: none;
     background-color: transparent;
@@ -30,6 +30,7 @@
   }
 
   .adorn-icon {
+    //这里 icon的布局是相对于父容器的，与 input兄弟元素无关
     position: absolute;
     top: 0;
 
@@ -45,6 +46,7 @@
     }
 
     .adorn-icon {
+      // icon左对齐
       left: 4px;
     }
   }
@@ -55,6 +57,7 @@
     }
 
     .adorn-icon {
+      // 右对齐
       right: 4px;
     }
   }

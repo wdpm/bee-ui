@@ -65,6 +65,7 @@ export default {
       type: Boolean,
       default: true
     },
+    // bind v-model
     value: Boolean
   },
   data () {

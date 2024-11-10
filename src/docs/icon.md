@@ -1,11 +1,11 @@
 <style>
 .icon--item {
   display: inline-block;
-  font-size: 22px;
   width: 85px;
-  text-align: center;
-  line-height: 32px;
   height: 90px;
+  font-size: 22px;
+  line-height: 32px;
+  text-align: center;
   vertical-align: text-bottom;
 }
 
