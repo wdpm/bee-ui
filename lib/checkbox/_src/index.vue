@@ -31,11 +31,11 @@ export default {
       }]
     },
     disabled: Boolean,
-    value: [Boolean]
+    value: Boolean
   },
   data () {
     return {
-      checked: this.value === true
+      checked: this.value
     }
   },
   computed: {
@@ -53,6 +53,7 @@ export default {
   },
   methods: {
     changeEvent (e) {
+      // 这里只是设置checked的新值，并且通知input。change的事件通知，在 watch 的checked中触发
       this.checked = e.target.checked
       this.$listeners.input && this.$listeners.input(this.checked)
     }
@@ -64,6 +65,7 @@ export default {
       }
     },
     'value': function (value) {
+      // 脏值检测
       if (value !== this.checked) this.checked = value
     }
   }

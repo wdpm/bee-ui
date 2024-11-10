@@ -12,14 +12,15 @@
 
   >span, .bee-radio--label {
     position: relative;
-
     display: block;
   }
 
+  //隐藏掉真正的radio input
   input[type=radio] {
     display: none;
   }
 
+  //这里直接渗透icon组件，不如传style对象？
   i.beefont {
     position: absolute;
     top: 0;
@@ -42,9 +43,7 @@
 
   &.bee-radio__disabled {
     cursor: no-drop;
-
     opacity: .4;
-
     i.beefont {
       color: @radio-color-unselected;
     }

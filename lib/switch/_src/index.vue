@@ -38,22 +38,20 @@ export default {
   },
   data () {
     return {
+      // checked 是 value 的本地副本，是响应式的
       checked: this.value
     }
   },
   methods: {
     onChange (e) {
       const next = e.target.checked
-
       if (next === this.checked) return
-
       this.changed(next)
     },
 
     changed (value) {
       this.checked = value
       const events = ['input', 'change']
-
       events.forEach((event) => {
         this.$listeners[event] && this.$listeners[event](value)
       })
@@ -61,6 +59,7 @@ export default {
   },
   watch: {
     value (value) {
+      // 似乎这个判断没有必要，此时value一定是不同于this.checked
       if (value !== this.checked) {
         this.checked = value
       }

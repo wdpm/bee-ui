@@ -6,34 +6,34 @@
     <section class="bee-select--body">
       <!-- multiple mode -->
       <template v-if='multiple'>
-        <span class="placeholder" v-if='values.length === 0'>{{placeholder}}</span>
+        <span class="placeholder" v-if='values.length === 0'>{{ placeholder }}</span>
 
         <span class="bee-select--item" v-for='(item, key) in values' :key='key'>
-          <span>{{item[1]}}</span>
+          <span>{{ item[1] }}</span>
           <bee-icon class='bee-remove--button' icon='error' @click.stop='removeSelectedItem(key)'></bee-icon>
         </span>
       </template>
 
       <!-- single mode -->
       <template v-else>
-<!--        当前已选列表不存在，并且搜索关键词不存在 => 显示默认提示的占位符-->
-        <span class="placeholder" v-if='values.length === 0 && !keyword'>{{placeholder}}</span>
+        <!--        当前已选列表不存在，并且搜索关键词不存在 => 显示默认提示的占位符 -->
+        <span class="placeholder" v-if='values.length === 0 && !keyword'>{{ placeholder }}</span>
 
-<!--        显示已选项的标签-->
-        <span v-if='searchDisabled' class="bee-selected--label">{{selectedLabel}}</span>
+        <!--        显示已选项的标签 -->
+        <span v-if='searchDisabled' class="bee-selected--label">{{ selectedLabel }}</span>
 
         <!-- open search -->
         <input v-else
-          class="bee-search--input"
-          type="text"
-          ref='search'
-          :disabled="disabled"
-          :readonly='readonly'
-          v-model.trim='keyword'
+               class="bee-search--input"
+               type="text"
+               ref='search'
+               :disabled="disabled"
+               :readonly='readonly'
+               v-model.trim='keyword'
         >
       </template>
     </section>
-<!--    下拉icon-->
+    <!--    下拉 icon-->
     <bee-icon class="bee-select--icon" icon='arr-down'></bee-icon>
   </section>
 </template>
@@ -50,10 +50,11 @@ const OptionsConstructor = Vue.extend(SelectOptions)
 export default {
   name: 'BeeSelect',
   props: {
-    // 初始option元素
+    // 初始 option 元素在 options 中的 index，可取值形式 null, 1, or [1, 2, 4]，
+    // 通过这个外键 ID，可以关联查询到对应的元素。 rename to foreignKey
     value: null,
-    // 初始值不为空，并且在options中无法找到时，会在此项中寻找相应的值
-    // 这个字段设计是干嘛的
+    // 初始值不为空，并且在 options 中无法找到时，会在此项中寻找相应的值
+    // 这个字段是否真的有必要？兜底机制
     defaultValueOptions: Array,
     // 可选项数组
     options: {
@@ -98,10 +99,10 @@ export default {
       // 表示当前已被选择的值，因为要支持多选，因此这里是一个数组。rename to selectedValues or selectedOptions
       values: [],
 
-      // 用于搜索option项的关键字 rename to searchKeyword
+      // 用于搜索 option 项的关键字 rename to searchKeyword
       keyword: '',
 
-      // 为false表示处于未显示选项列表状态，为true表示处于显示选项列表的状态。 rename to isInShowOptionsState
+      // 为 false 表示处于未显示选项列表状态，为 true 表示处于显示选项列表的状态。 rename to isInShowOptionsState
       toggle: false
     }
   },
@@ -170,7 +171,7 @@ export default {
           options: this.options,
           optionKey: this.optionKey,
           multiple: this.multiple,
-          // 使用父容器的宽度来限制option list的宽度
+          // 使用父容器的宽度来限制 option list 的宽度
           minWidth: this.$el.offsetWidth,
           scrollParent: this.scrollParent,
           reference: this.$el,
@@ -188,12 +189,12 @@ export default {
         }
 
         setTimeout(() => {
-          // 这里绑定到了window，设计不好，应该仅绑定到特定影响的元素
+          // 这里绑定到了 window，设计不好，应该仅绑定到特定影响的元素
           Listener.addListener(window, 'click', this.toggleOptions)
         })
       }
 
-      // 这里单独赋值到一个实例变量，方便TDD
+      // 这里单独赋值到一个实例变量，方便 TDD
       this._optionsInstance = new OptionsConstructor({
         data: _data,
         methods: {
@@ -219,7 +220,7 @@ export default {
     },
 
     onSelected (data) {
-      // 单选模式下，option list实例存在并打开，并且点击了其中一项时，应该关闭option list的显示
+      // 单选模式下，option list 实例存在并打开，并且点击了其中一项时，应该关闭 option list 的显示
       if (!this.multiple && this._optionsInstance && this._optionsInstance.open) {
         this.hideOptions()
       }
@@ -228,6 +229,7 @@ export default {
       // When the length of the this.options is 0, the data will be undefined.
       if (!data || helpers.equal(data, this.values)) return
 
+      // 这里 hardcode 为 emit 事件，即 select-options 需要 emit 到父组件
       this.updateSelected(helpers.deepCopy(data), true)
     },
 
@@ -243,7 +245,7 @@ export default {
           })
         }
 
-        // 这里只取 label 字段组成数组
+        // item format: [value,label]
         _value = data.map(item => item[0])
       } else {
         _value = helpers.getValueByPath(data, '[0][0]')
@@ -253,12 +255,22 @@ export default {
         }
       }
 
+      // 这里为何不需要将 _value 写回 this.value ??????
+
+      // _value format : [value1,value2,...] or [value1]
+
       if (!emit) return
 
       // Emit events.
+      // 这个两个事件是input元素的原生事件
       const events = ['input', 'change']
       events.forEach((eventName) => {
         if (this.$listeners[eventName]) {
+          // Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders.
+          // Instead, use a data or computed property based on the prop's value. Prop being mutated: "value"
+          // this.value = _value
+
+          // 将_value传递给input的原生事件，等于更新this.value，因为vue 2.x中v-model binds this value field.
           this.$listeners[eventName](_value)
         }
       })
@@ -266,32 +278,33 @@ export default {
 
     valuesInit () {
       const { value, optionKey, options, defaultValueOptions } = this
-      const dataArray = helpers.typeof(value) !== 'array' ? [value] : value
+      const foreignKeyArray = helpers.typeof(value) !== 'array' ? [value] : value
+      // [1,3]
 
-      // 此函数用于遍历选项数组，提取每个选项的值（通过optionKey.value路径）和标签（通过optionKey.label路径），
-      // 并检查这些值是否存在于dataArray中。如果存在，则将值-标签对添加到累加器（acc）数组中。
+      // 此函数用于遍历选项数组，提取每个选项的值（通过 optionKey.value 路径）和标签（通过 optionKey.label 路径），
+      // 并检查这些值是否存在于 dataArray 中。如果存在，则将值 - 标签对添加到累加器（acc）数组中。
       function reduceIterator (acc, item) {
-        const _value = helpers.getValueByPath(item, optionKey.value)
+        // 这里的 _value 就是类似一个表中的 ID
+        const foreignKey = helpers.getValueByPath(item, optionKey.value)
         const _label = helpers.getValueByPath(item, optionKey.label)
 
-        if (dataArray.indexOf(_value) > -1) {
-          // 其实这里selected 还是推荐重构为元素也是对象的形式，即{label:'',value: 1}
-          // [value,label]
-          acc.push([_value, _label])
+        // 根据外键进行查询
+        if (foreignKeyArray.indexOf(foreignKey) > -1) {
+          // [[1,"香蕉"],[3,"梨"]]
+          acc.push([foreignKey, _label])
         }
 
         return acc
       }
 
-      // 遍历options，应用reduceIterator函数，初始累加器为空数组。
+      // 遍历 options，应用 reduceIterator 函数，初始累加器为空数组。
       let values = options.reduce(reduceIterator, [])
-      // 如果有 defaultValueOptions 选项，也用同样的方式处理并合并到已有的values中。
+      // 如果有 defaultValueOptions 选项，也用同样的方式处理并合并到已有的 values 中。
       if (defaultValueOptions) {
         values = defaultValueOptions.reduce(reduceIterator, values)
       }
 
-      // 如果values数组为空且原始value存在，则发出事件 => 说明用户设置的初始option根本不在可选列表中，即非法
-      // 为什么需要emit?
+      // 如果 values 数组为空且原始 value 存在，则发出事件 => 说明用户设置的初始 option 根本不在可选列表中，即非法
       this.updateSelected(values, values.length === 0 && value)
     },
 
@@ -319,6 +332,7 @@ export default {
       }
     },
 
+    // 这个值是怎么更新的？
     'value': function (newValue, oldValue) {
       // 复杂对象需要自定义的脏值检测
       if (helpers.equal(newValue, oldValue) === false) {
@@ -333,7 +347,7 @@ export default {
       // abc => a.*b.*c 这样是为了兼容字母之间的字符（包含空格） a  b  c
       const reg = value.length ? new RegExp(value.split('').join('.*')) : /.*/
 
-      // 过滤后的选项数组被赋值给this._optionsInstance.options，这会更新显示给用户的可选项，
+      // 过滤后的选项数组被赋值给 this._optionsInstance.options，这会更新显示给用户的可选项，
       // 使得只有匹配关键词的项目可见。
       this._optionsInstance.options = this.options.filter(item => {
         const _label = helpers.getValueByPath(item, this.optionKey.label)

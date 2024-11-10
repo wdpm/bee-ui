@@ -25,6 +25,7 @@ export default {
       default: () => []
     },
     block: Boolean,
+    // array index
     value: Number
   },
   data () {
@@ -37,7 +38,9 @@ export default {
       if (!value) return
       if (index === this.selected) return
 
+      // 更新当前选中index
       this.selected = index
+      // 通知变化
       this.$listeners.input && this.$listeners.input(index)
       this.$listeners.change && this.$listeners.change(index)
     }

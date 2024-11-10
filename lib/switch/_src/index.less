@@ -2,6 +2,7 @@
 
 .bee-switch {
   position: relative;
+  // 直接子元素为行内块级
   display: inline-block;
   overflow: hidden;
 
@@ -13,11 +14,13 @@
   user-select: none;
   cursor: pointer;
 
+  //隐藏实际input
   input[type="checkbox"] {
     display: none;
   }
 
   .bee-switch--before, .bee-switch--after {
+    // 表格布局
     display: table;
     width: 100%;
     height: 100%;
@@ -43,6 +46,7 @@
     border-top-left-radius: 500px;
     border-bottom-left-radius: 500px;
     padding-left: 4px;
+    // right 空间大部分是小圆点btn
     padding-right: @switch-height;
     background-color: @switch-background-color_active;
   }
@@ -51,6 +55,7 @@
     text-align: right;
     border-top-right-radius: 500px;
     border-bottom-right-radius: 500px;
+    // left空间大部分是小圆点btn
     padding-left: @switch-height;
     padding-right: 4px;
     background-color: @switch-background-color;
@@ -58,6 +63,7 @@
 
   .bee-switch--btn {
     display: block;
+    // 30 - 4
     width: (@switch-height - @switch-spacing);
     height: (@switch-height - @switch-spacing);
 
@@ -72,15 +78,27 @@
     transition: all .15s;
   }
 
+  // 两个按钮需要保证宽度一致，高度一致
+
   &.bee-switch__open {
+    // 开按钮对齐父容器
     .bee-switch--before {
       transform: translateX(0);
     }
 
+    // 关按钮右移，溢出隐藏
     .bee-switch--after {
       transform: translateX(100%);
     }
 
+    // 注意这个小圆点的位移计算，
+    // a) 默认状态是false，此时小圆点对齐父容器左侧
+    // b) 为true时，这个圆点需要位移一段距离。
+    // 理论上是先将它左移一个相等于它宽度的位移，即translateX(-100%)，
+    // 然后相对于父容器右移一个按钮的宽度，即calc(100%)，
+    // 但是，此时小圆点右侧过于紧贴父容器右侧了，于是给了2px的左移补偿，也就是稍微移回来一点点。
+    // 示意图：一个小圆点，左侧和右侧分别是2px padding
+    // [2 + 26 + 2] + [2 + 26 + 2]
     .bee-switch--btn {
       left: calc(100% - (@switch-spacing/2));
       transform: translateX(-100%);
@@ -88,10 +106,12 @@
   }
 
   &.bee-switch__close {
+    // 开按钮左移，溢出隐藏
     .bee-switch--before {
       transform: translateX(-100%);
     }
 
+    // 关按钮对齐父容器
     .bee-switch--after {
       transform: translateX(0);
     }
@@ -111,6 +131,7 @@
     }
 
     .bee-switch--btn {
+      // 24 - 4
       width: (@switch-height_sm - @switch-spacing);
       height: (@switch-height_sm - @switch-spacing);
     }
@@ -129,6 +150,7 @@
     }
 
     .bee-switch--btn {
+      // 36 - 4
       width: (@switch-height_lg - @switch-spacing);
       height: (@switch-height_lg - @switch-spacing);
     }
@@ -136,7 +158,6 @@
 
   &.bee-switch__disabled {
     cursor: no-drop;
-
     opacity: .4;
   }
 }
