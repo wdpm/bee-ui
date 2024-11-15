@@ -13,14 +13,17 @@
     .bee-tab-bar {
       position: absolute;
       z-index: 1;
+      // delegate to js
       left: 0;
 
       display: block;
 
+      // delegate to js
       width: 0;
 
       transition: all .25s;
 
+      // 默认bar在顶部
       border-top: 2px solid @tab-color_active;
     }
 
@@ -35,7 +38,7 @@
       color: @font-tint-color;
 
       &.bee-tab--label__active {
-        position: relative;
+        //position: relative;
 
         color: @tab-color_active;
         background-color: @tab-background-color_active;
@@ -44,7 +47,7 @@
   }
 
   .bee-tab--body {
-    position: relative;
+    //position: relative;
 
     box-sizing: border-box;
     padding: 20px;
@@ -52,11 +55,13 @@
     background-color: @tab-background-color_active;
   }
 
+  // card 类型含有边框，设置背景色
   &.bee-tab__card {
     border: 1px solid @tab-background-color;
     border-top: none;
   }
 
+  // header 类型是背景透明
   &.bee-tab__header {
     background-color: transparent;
   }

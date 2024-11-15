@@ -14,15 +14,20 @@
       display: inline-block;
 
       text-align: center;
+      // 文本上边缘为对齐基准
       vertical-align: text-top;
 
+      // 横线
       .bee-step--line {
         &::before, &::after {
           position: absolute;
+          // 大致的垂直居中，然而不是绝对垂直居中，
+          // 还需要上移自身的一半高度，看下面的translateY补偿
           top: (@step-item-size / 2);
 
           display: block;
 
+          // 两侧都是1/2宽度
           width: 50%;
           height: @step-line-height;
 
@@ -31,10 +36,12 @@
 
           background-color: @step-background-color;
         }
+        // 左边1/2 = 左对齐
         &::before {
           left: 0;
         }
 
+        // 右边1/2 = 右对齐
         &::after {
           right: 0;
         }
@@ -79,30 +86,33 @@
         font-size: @step-desc-font-size;
       }
 
+      // 第一步不需要左边的1/2宽度的横线
       &:first-child {
         .bee-step--line::before {
           display: none;
         }
       }
 
+      // 最后一步不需要右边的1/2宽度的横线
       &:last-child {
         .bee-step--line::after {
           display: none;
         }
       }
 
-      &.bee-step--item__actived {
+      // 激活状态的样式重写
+      &.bee-step--item__active {
         .bee-step--line::before, .bee-step--line::after {
-          background-color: @step-background-color_actived;
+          background-color: @step-background-color_active;
         }
 
         .bee-step-item--main {
-          color:  @step-color_actived;
-          background-color: @step-background-color_actived;
+          color: @step-color_active;
+          background-color: @step-background-color_active;
         }
 
         .bee-step-item--label, .bee-step-item--desc {
-          color:  @step-background-color_actived;
+          color: @step-background-color_active;
         }
       }
     }

@@ -32,7 +32,6 @@
 @alert-title-height: 40px;
 @alert-footer-button-height: 30px;
 
-
 // button
 @button-sm-width: 50px;
 @button-width: 80px;
@@ -161,7 +160,9 @@
 @popper-shadow-color: rgba(0, 0, 0, .2);
 @popper-background-color: #ffffff;
 @popper-arr-size: 6px;
-@popper-zindex: @z-2 - 10;
+// 在dialog中，如果包含了popper元素，popper元素应该大于 dialog的基本z高度
+//@popper-zindex: @z-2 - 10;
+@popper-zindex: @z-2 + 10;
 
 // radio
 @radio-line-height: @normal-height;
@@ -192,8 +193,8 @@
 @step-desc-font-size: 12px;
 @step-color: #ffffff;
 @step-background-color: @border-color;
-@step-color_actived: #ffffff;
-@step-background-color_actived: @primary-color;
+@step-color_active: #ffffff;
+@step-background-color_active: @primary-color;
 
 // switch
 @switch-height: @normal-height;
@@ -219,7 +220,7 @@
 @table-tr-color_actived: @primary-color;
 @table-tr-background-color_actived: rgba(255, 103, 1, .05);
 
-// tooptip
+// tooptip => tooltip
 @tooptip-background-color: #333333;
 @tooptip-color: #ffffff;
 @tooptip-font-size: 12px;

@@ -1,12 +1,12 @@
 @import '../../theme.less';
 
+// 和dialog不太一致的样式在于，height 缩小了
 .bee-dialog.bee-dialog__alert {
   .bee-dialog--panel {
     transform: translate3d(-50%, -70%, 0);
 
     .bee-dialog--title {
       height: @alert-title-height;
-
       line-height: @alert-title-height;
     }
     
@@ -15,7 +15,6 @@
 
       .alert-content {
         padding: 10px 0;
-
         line-height: 1.5;
       }
     }
@@ -23,7 +22,6 @@
     .bee-dialog--footer {
       [class*="bee-dialog--btn"] {
         height: @alert-footer-button-height;
-
         line-height: @alert-footer-button-height;
       }
     }

@@ -1,4 +1,5 @@
 <template>
+<!--  alert 内部实现实际是委托到dialog的组件-->
   <bee-dialog v-model='open'
     :class="['bee-dialog__alert', {
       'bee-dialog__center': center
