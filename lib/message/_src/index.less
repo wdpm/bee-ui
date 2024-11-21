@@ -4,10 +4,12 @@
   position: fixed;
   z-index: @z-2;
   top: @message-top;
+  // 左侧对齐水平方向中心线
   left: 50%;
 
   box-sizing: border-box;
   width: @message-width;
+  // 这个margin-left偏移是对left 50% 的补偿
   margin-left: (-@message-width/2);
   padding: 8px 15px;
 
@@ -21,7 +23,6 @@
 
   .bee-message--icon {
     padding-right: 4px;
-
     font-size: 16px;
   }
 
@@ -51,7 +52,6 @@
 
 .slid-down-enter {
   transform: translateY(-100px);
-
   opacity: 0;
 }
 

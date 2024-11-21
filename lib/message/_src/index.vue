@@ -25,10 +25,12 @@ export default {
   data () {
     return {
       open: false,
+      // enum string, success, error, warn
       type: 'warn',
       duration: 3,
       html: null,
       message: '',
+      // enum string, left center right
       align: false
     }
   },
@@ -40,6 +42,7 @@ export default {
         error: 'error'
       }
 
+      // 利用 dict 来处理默认值的赋值（即type未定义时），挺巧妙的
       return icons[this.type] || icons.warn
     }
   },
@@ -62,7 +65,7 @@ export default {
     show () {
       this.open = true
 
-      // If the duration was be setted.
+      // If the duration was being set.
       if (Number(this.duration)) {
         this.addTimeout()
       }

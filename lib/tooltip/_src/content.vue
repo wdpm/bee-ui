@@ -28,7 +28,6 @@ export default {
   },
   mounted () {
     document.body.appendChild(this.$el)
-
     this.open = true
   },
   beforeDestroy () {
@@ -38,6 +37,7 @@ export default {
   },
   methods: {
     afterLeave () {
+      // 这个本质上会调用 destroy相关hooks
       this.$destroy()
     }
   }

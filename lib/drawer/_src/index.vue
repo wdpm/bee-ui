@@ -32,6 +32,7 @@ export default {
     },
     width: String,
     height: String,
+    // vue2.x 中 prop 没有不是响应式数据
     value: {
       type: Boolean,
       default: false
@@ -39,7 +40,9 @@ export default {
   },
   data () {
     return {
+      // for bee-drawer(container)
       visible: false,
+      // for bee-drawer-body
       show: false
     }
   },
@@ -57,16 +60,19 @@ export default {
   methods: {
     updateSwitch () {
       const value = this.value
-
-      if (value) {
-        this.visible = value
-
-        setTimeout(() => {
-          this.show = value
-        })
-      } else {
-        this.show = value
-      }
+      this.visible = this.show = value
+      // if (value) {
+      //   // value变为true，显示
+      //   this.visible = value
+      //   // setTimeout(() => {
+      //   //   this.show = value
+      //   // })
+      //   this.show = value
+      // } else {
+      //   this.visible = value
+      //   // value变为false，此时仅body隐藏
+      //   this.show = value
+      // }
     },
 
     beforeEnter () {
@@ -83,11 +89,13 @@ export default {
 
     afterLeave () {
       this.visible = false
+      // 这个响应的是v-model，也就是prop中value的变化
       this.$listeners.input && this.$listeners.input(false)
       this.$listeners.closed && this.$listeners.closed()
     },
 
     hide () {
+      // 此时会导致 <transition name='bee-drawer' 过渡到消失状态，触发 afterLeave ()，然后 => this.visible = false
       this.show = false
     }
   },

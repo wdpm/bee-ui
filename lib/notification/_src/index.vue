@@ -1,8 +1,8 @@
 <template>
   <transition name='notification'
-    @before-enter='beforeEnter'
-    @before-leave='beforeLeave'
-    @after-leave='afterLeave'
+              @before-enter='beforeEnter'
+              @before-leave='beforeLeave'
+              @after-leave='afterLeave'
   >
     <div :class='["bee-notification", {
         "bee-notification__info": type === "info",
@@ -10,12 +10,12 @@
         "bee-notification__warn": type === "warn",
         "bee-notification__error": type === "error"
       }]'
-      @mouseenter='clearTimeout'
-      @mouseleave='addTimeout'
-      :style='{
+         @mouseenter='clearTimeout'
+         @mouseleave='addTimeout'
+         :style='{
         top: boundingTop + "px"
       }'
-      v-show='open'
+         v-show='open'
     >
       <div class='bee-notification--body'>
         <bee-icon class='bee-notification--close' icon='close' @click='onclose'></bee-icon>
@@ -23,8 +23,8 @@
         <div class='bee-notification--content'>
           <bee-icon class='bee-notification--icon' :icon='icon'></bee-icon>
           <div class='content--main'>
-            <div class='content-main--title'>{{titleText}}</div>
-            <div class='content-main--content'>{{message}}</div>
+            <div class='content-main--title'>{{ titleText }}</div>
+            <div class='content-main--content'>{{ message }}</div>
           </div>
         </div>
       </div>
@@ -41,6 +41,7 @@ export default {
       message: '',
       duration: 3,
       open: false,
+      // ?
       boundingTop: 0
     }
   },
@@ -52,7 +53,6 @@ export default {
         success: 'success',
         error: 'error'
       }
-
       return icons[this.type] || icons.info
     },
 
@@ -75,7 +75,6 @@ export default {
   },
   beforeDestroy () {
     // Remove the components when it disappeared.
-
     if (this._vnode.elm.parentNode) {
       this._vnode.elm.parentNode.removeChild(this._vnode.elm)
     }
@@ -88,7 +87,7 @@ export default {
     show () {
       this.open = true
 
-      // If the duration was be setted.
+      // If the duration was being set.
       if (Number(this.duration)) {
         this.addTimeout()
       }
@@ -111,6 +110,7 @@ export default {
 
     addTimeout () {
       // if this is manually closed, break after.
+      // duration is 0
       if (!Number(this.duration)) return
 
       this.clearTimeout()
@@ -124,5 +124,5 @@ export default {
 </script>
 
 <style lang="less">
-  @import './index.less';
+@import './index.less';
 </style>

@@ -17,6 +17,7 @@ const ContentConstructor = Vue.extend(TooltipContent)
 export default {
   name: 'BeeTooltip',
   props: {
+    // 激活方式，默认为鼠标悬浮
     type: {
       type: String,
       validator: function (value) {

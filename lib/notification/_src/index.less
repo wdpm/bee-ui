@@ -18,9 +18,9 @@
 
   .bee-notification--body {
     position: relative;
-
     font-size: 14px;
 
+    // 右上角 X
     .bee-notification--close {
       position: absolute;
       top: 0;
@@ -31,9 +31,11 @@
 
       cursor: pointer;
     }
+
     .bee-notification--content {
       overflow: hidden;
 
+      // icon 左浮动对齐
       .bee-notification--icon {
         float: left;
 
@@ -46,7 +48,6 @@
 
         .content-main--title {
           color: @notification-title-color;
-
           font-size: 16px;
           font-weight: bold;
           line-height: 24px;
@@ -54,12 +55,13 @@
         
         .content-main--content {
           padding-top: 5px;
-
           color: @notification-body-color;
         }
       }
     }
   }
+
+  //变体type重写 icon颜色
 
   &.bee-notification__info {
     .bee-notification--icon {
@@ -102,6 +104,7 @@
   opacity: 0;
 }
 
+// bounce x distance animation
 @keyframes notifyEntry {
   0% {
     transform: translate3d(200%, 0, 0);

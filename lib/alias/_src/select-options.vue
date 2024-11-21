@@ -9,12 +9,13 @@
   >
     <div :style="styles">
       <template v-for='(item, key) in options'>
+        <!--  selected !== getValue(item) 过滤掉已选择的 item -->
         <div class="option--item"
-          :key="key"
-          v-if='selected !== getValue(item)'
-          @click='onSelected(item)'
+             :key="key"
+             v-if='selected !== getValue(item)'
+             @click='onSelected(item)'
         >
-          <div class="option-item--content">{{getValue(item)}}</div>
+          <div class="option-item--content">{{ getValue(item) }}</div>
         </div>
       </template>
     </div>
@@ -26,7 +27,7 @@ export default {
   data () {
     return {
       open: false,
-      refrence: null,
+      reference: null,
       scrollParent: null,
       options: [],
       optionKey: '',
@@ -61,5 +62,5 @@ export default {
 </script>
 
 <style lang="less">
-  @import './select-options.less';
+@import './select-options.less';
 </style>

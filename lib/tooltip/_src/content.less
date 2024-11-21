@@ -1,7 +1,7 @@
 @import '../../theme.less';
 
 .bee-tooltip-content {
-  font-size: @tooptip-font-size;
+  font-size: @tooltip-font-size;
 
   .bee-tooltip-content--body {
     display: inline-block;
@@ -12,45 +12,46 @@
   }
 }
 
+// 这里主要是设置小箭头的颜色，以及content颜色
 .bee-popper.bee-tooltip-content__dark {
   &[placement^="bottom"] .bee-popper--arrow {
-    border-bottom-color: @tooptip-background-color;
+    border-bottom-color: @tooltip-background-color;
     
     &::after {
-      border-bottom-color: @tooptip-background-color;
+      border-bottom-color: @tooltip-background-color;
     }
   }
 
   &[placement^="top"] .bee-popper--arrow {
-    border-top-color: @tooptip-background-color;
+    border-top-color: @tooltip-background-color;
 
     &::after {
-      border-top-color: @tooptip-background-color;
+      border-top-color: @tooltip-background-color;
     }
   }
 
   &[placement^="left"] .bee-popper--arrow {
-    border-left-color: @tooptip-background-color;
+    border-left-color: @tooltip-background-color;
 
     &::after {
-      border-left-color: @tooptip-background-color;
+      border-left-color: @tooltip-background-color;
     }
   }
 
   &[placement^="right"] .bee-popper--arrow {
-    border-right-color: @tooptip-background-color;
+    border-right-color: @tooltip-background-color;
 
     &::after {
-      border-right-color: @tooptip-background-color;
+      border-right-color: @tooltip-background-color;
     }
   }
 
   .bee-popper--body {
-    border-color: @tooptip-background-color;
+    border-color: @tooltip-background-color;
   }
 
   .bee-tooltip-content--body {
-    color: @tooptip-color;
-    background-color: @tooptip-background-color;
+    color: @tooltip-color;
+    background-color: @tooltip-background-color;
   }
 }
