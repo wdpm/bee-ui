@@ -139,6 +139,9 @@ export default {
     },
     /**
      * 判断这个element是否为 this._optionsInstance.$el的后代（间接后代也可以）
+     *
+     * 用于判断点击事件是否发生在级联选择器组件的下拉选项内。
+     * 这有助于决定是否切换选项列表的可见性，确保在选项内的点击不会意外关闭下拉菜单。
      * @param element
      * @returns {boolean}
      */
