@@ -17,7 +17,7 @@
 
     line-height: (@pagination-height - 2px);
 
-    &.bee-pagination--button__actived {
+    &.bee-pagination--button__active {
       color: @primary-color;
       border-color: @primary-color;
     }
@@ -26,7 +26,8 @@
       border-color: @pagination-background-color_disabled;
       background-color: @pagination-background-color_disabled;
 
-      &.bee-pagination--button__actived, &:active {
+      // disabled 之后，鼠标点击也不允许显示高亮样式或者发生样式变化
+      &.bee-pagination--button__active, &:active {
         color: @font-tint-color !important;
         border-color: @pagination-background-color_disabled;
       }
@@ -35,7 +36,6 @@
 
   .bee-pagination--button__more {
     display: inline-block;
-
     margin-right: 5px;
   }
 
@@ -59,7 +59,8 @@
     vertical-align: middle;
 
     .page--input, .quick--button {
-      vertical-align: bottom;
+      //vertical-align: bottom;
+      vertical-align: middle;
     }
 
     .page--input {
@@ -70,11 +71,8 @@
 
       input {
         height: @pagination-height;
-
         text-align: center;
-
         color: @font-tint-color;
-
         line-height: @pagination-height;
       }
     }
