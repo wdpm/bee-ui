@@ -15,10 +15,11 @@
 
   .bee-loading--body {
     position: absolute;
+    // absolute center
     top: 50%;
     left: 50%;
-
     transform: translate3d(-50%, -50%, 0);
+
     text-align: center;
 
     .bee-loading--animation {
@@ -42,6 +43,8 @@
   }
 }
 
+// 在动画enter之前，找到.bee-loading的父容器，设置为相对布局。
+// 因为 .bee-loading 布局为 absolute
 .bee-loading--parent {
   position: relative;
 }

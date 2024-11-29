@@ -24,22 +24,28 @@
   height: 100%;
   margin-right: 3px;
 
+  //动画一个完整周期为1.2s
   animation: stretchdelay 1.2s infinite ease-in-out;
 
   border-radius: 500px;
   background-color: @primary-color;
 }
 
+//animation-delay 负值设置多少，动画跳过多少秒进入动画周期
+
 .loading-undulate {
   .rect2 {
+    // 预先执行1.1s
     animation-delay: -1.1s;
   }
 
   .rect3 {
+    // 预先执行1.0s
     animation-delay: -1.0s;
   }
 
   .rect4 {
+    // ...以此类推
     animation-delay: -0.9s;
   }
   .rect5 {

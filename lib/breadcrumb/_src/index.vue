@@ -2,16 +2,17 @@
   <span class="bee-breadcrumb">
     <template v-for="(crumb, key) in crumbs">
       <span :key="'breadcrumb_' + key" v-if="crumb"
-        :class="['breadcrumb--item', {
+            :class="['breadcrumb--item', {
           'breadcrumb--item__active': key === (crumbs.length - 1)
         }]"
       >
-        <router-link v-if="key + 1 < crumbs.length && crumb.route"
-          :to="crumb.route" >
-          {{crumb.label}}
+         <!--    key + 1 < crumbs.length 说明不是最后一项    -->
+         <router-link v-if="key + 1 < crumbs.length && crumb.route"
+                      :to="crumb.route">
+          {{ crumb.label }}
         </router-link>
 
-        <span v-else> {{crumb.label}} </span>
+        <span v-else> {{ crumb.label }} </span>
 
         <span v-if="key + 1 < crumbs.length">></span>
       </span>
@@ -25,7 +26,7 @@
 export default {
   name: 'BeeBreadcrumb',
   props: {
-    crumbs: [Array]
+    crumbs: Array
   },
   data () {
     return {}

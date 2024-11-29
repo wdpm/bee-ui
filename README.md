@@ -1,10 +1,6 @@
 ## 在线文档
 
-[v0.8.0](https://dwyw.github.io/bee-ui/0.8.0/index.html)
-
-[latest](https://dwyw.github.io/bee-ui/latest/index.html)
-
-[bee-ui-audio-vue](https://dwyw.github.io/bee-ui-audio/latest/index.html)
+源码阅读笔记位于：my-notes.md
 
 
 ## npm 安装

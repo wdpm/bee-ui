@@ -1,4 +1,5 @@
 <template>
+<!--  需要一个SVG静态查看器来分析和绘制loading SVG-->
   <svg class='loading-logo'>
     <path d="M 2.25 25 C 2.5 33.75, 12.5 37.5, 20 30 C 20 30, 30 17.5 ,30 17.5" stroke="#ccc" fill="transparent" stroke-width="2.5" stroke-linecap="round"/>
     <path d="M 2.25 25 C 2.5 16.25, 12.5 12.5, 20 20 C 20 20, 30 32.5 ,30 32.5" stroke="#ccc" fill="transparent" stroke-width="2.5" stroke-linecap="round"/>

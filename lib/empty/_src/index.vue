@@ -47,6 +47,8 @@ export default {
   padding: 20px 0;
 
   .bee-empty--icon {
+    // flex-grow: 0 说明没有膨胀能力
+    // flex-shrink: 1 说明收缩能力为1
     flex: 0 1 auto;
 
     opacity: .7;

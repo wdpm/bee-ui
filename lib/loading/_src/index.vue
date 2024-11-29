@@ -38,6 +38,7 @@ export default {
     }
   },
   computed: {
+    // rename to loadingComponentName
     loading () {
       const components = {
         'main': 'MainLoading',

@@ -25,6 +25,7 @@
 - [x] alert 这个组件和dialog非常类似，本质不同之处在于，这个是提供一种全局的指令实现，从函数角度出发，而不是从界面template角度考虑。
 - [ ] message 缺失 test
 - [x] alias 这个UI元素不是很常见
+- [ ] `lib/loading/_src/main-loading.vue` 探索SVG动画编辑器与动画设计
 
 ## 只运行某个组件的测试
 
