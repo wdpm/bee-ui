@@ -11,7 +11,7 @@
 
 - 当父组件的 prop 发生变化时，子组件会自动响应这些变化并更新视图。
 
-## 组件阅读记录
+## 组件阅读TODO
 
 基础组件
 
@@ -26,7 +26,19 @@
 - [ ] message 缺失 test
 - [x] alias 这个UI元素不是很常见
 - [ ] `lib/loading/_src/main-loading.vue` 探索SVG动画编辑器与动画设计
+- [ ] scrollbar
+- [ ] tree
 
+## 增强实现
+
+- [ ] loading
+  - [ATOM Loading Effect Example](https://www.cssscript.com/demo/atom-loading-effect/)
+- [ ] skeleton 
+  - https://github.com/amsrafid/js-skeleton-loader based on js
+  - https://dgknca.github.io/css-skeletons/ based on css
+  - https://github.com/nullilac/skeleton-screen-css based on css
+
+  
 ## 只运行某个组件的测试
 
 See [scripts/single-test.js](scripts/single-test.js)
