@@ -1,5 +1,48 @@
 # 笔记
 
+
+
+[Yuumi UI](https://dwyw.github.io/yuumi-ui-vue/latest/t) 是 bee-ui 的后继者，使用Vue 3.x，组件实现有所差异。
+
+| 组件                  | bee-ui | Yuumi UI    |
+| --------------------- | ------ | ----------- |
+| icon 图标             | √      | √           |
+| button 按钮           | √      | √           |
+| input 输入框          | √      | √           |
+| NumberInput 计数器    |        | √           |
+| select 选框           | √      | √           |
+| radio 单选            | √      | √           |
+| checkbox 多选         | √      | √           |
+| switch 开关           | √      | √           |
+| picker 选择框         | √      |             |
+| TimePicker 时间选择器 |        | √           |
+| DatePicker 时间选择器 |        | √           |
+| table 表格            | √      | √           |
+| Warning 警告框        |        | √           |
+| Slider 滑块           |        | √           |
+| step 步骤条           | √      | √           |
+| tab 选项卡            | √      | √           |
+| dialog 窗口           | √      | √           |
+| alert 对话            | √      | √           |
+| message 消息          | √      | √           |
+| notification 通知     | √      | √           |
+| tooltip 文字提示      | √      | √           |
+| drawer 抽屉           | √      | √           |
+| RatioRect等比矩形     |        | √           |
+| RatioImage等比图片    |        | √           |
+| alias 别名            | √      |             |
+| cascader 级联选择     | √      |             |
+| pagination 分页       | √      | √           |
+| divider 分割线        |        | √           |
+| breadcrumb 面包屑     | √      |             |
+| loading 加载          | √      | √           |
+| empty 空内容          | √      | √           |
+| scrollbar 滚动区域    | √      |             |
+| tree 树形组件         | √      | √           |
+| Navs侧边栏菜单组件    |        | √（很一般） |
+
+
+
 ## 注意
 
 在 Vue 2 中:
